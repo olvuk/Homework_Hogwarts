@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         Gryffindor harryPotter = new Gryffindor("Гарри Поттер", 98, 71, 100, 57, 100);
         Gryffindor hermioneGranger = new Gryffindor("Гермиона Грейнджер", 100, 96, 100, 100, 89);
-        Gryffindor ronWeasley = new Gryffindor("Рон Уизли", 70, 73, 52, 91, 68);
+        Gryffindor ronWeasley = new Gryffindor("Рон Уизли", 70, 73, 100, 100, 89);
         Slytherin dracoMalfoy = new Slytherin("Драко Малфой", 97, 95, 95, 96, 99, 88, 99);
         Slytherin grahamMontague = new Slytherin("Грэхэм Монтегю", 58, 70, 84, 82, 72, 68, 77);
         Slytherin gregoryGoyle = new Slytherin("Грегори Гойл", 51, 67, 70, 84, 90, 76, 81);
@@ -30,8 +30,10 @@ public class Main {
         gregoryGoyle.compare(chzhouChang);
         grahamMontague.compare(hermioneGranger);
         harryPotter.compare(hermioneGranger);
+        hermioneGranger.compare(harryPotter);
         gregoryGoyle.compare(harryPotter);
         justinFinchFletchly.compare(sedricDiggory);
+        ronWeasley.compare(hermioneGranger);
 
 
     }

@@ -11,17 +11,32 @@ abstract class Hogwarts {
 
     abstract int calculateFacultyPoints();
 
-    abstract void compareFacultyPoints(Hogwarts student);
-
     public int calculateGeneralPoints() {
         return this.magicPower + this.transgressionDistance;
     }
+
+    abstract void printBestStudent(Hogwarts bestStudent, Hogwarts worstStudent);
 
     public void compare(Hogwarts student) {
         if (this.getClass().equals(student.getClass())) {
             compareFacultyPoints(student);
         } else {
             compareGeneralPoints(student);
+        }
+    }
+
+    public void compareFacultyPoints(Hogwarts student) {
+        int thisFacultyPoints = this.calculateFacultyPoints();
+        int studentFacultyPoints = student.calculateFacultyPoints();
+
+        if (thisFacultyPoints < studentFacultyPoints) {
+            printBestStudent(student, this);
+        }
+        else if (thisFacultyPoints > studentFacultyPoints) {
+            printBestStudent(this, student);
+        }
+        else {
+            System.out.println(student.name + " и " + this.name + " набрали одинаковое количество очков");
         }
     }
 

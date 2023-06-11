@@ -12,19 +12,9 @@ public class Ravenclaw extends Hogwarts {
         this.creativity = creativity;
     }
 
-    public void compareFacultyPoints(Hogwarts student) {
-        int thisFacultyPoints = this.calculateFacultyPoints();
-        int studentFacultyPoints = student.calculateFacultyPoints();
-
-        if (thisFacultyPoints < studentFacultyPoints) {
-            System.out.println(super.name + " лучший Когтевранец, чем " + student.name);
-        }
-        else if (thisFacultyPoints > studentFacultyPoints) {
-            System.out.println(student.name + " лучший Когтевранец, чем " + super.name);
-        }
-        else {
-            System.out.println(student.name + " и " + super.name + " набрали одинаковое количество очков");
-        }
+    @Override
+    void printBestStudent(Hogwarts bestStudent, Hogwarts worstStudent) {
+        System.out.printf("%s лучший Когтевранец, чем %s%n", bestStudent.name, worstStudent.name);
     }
 
     @Override
