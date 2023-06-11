@@ -1,7 +1,7 @@
-public class Hogwarts {
+abstract class Hogwarts {
     String name;
-    private int magicPower;
-    private int transgressionDistance;
+    private final int magicPower;
+    private final int transgressionDistance;
 
     public Hogwarts(String name, int magicPower, int transgressionDistance) {
         this.name = name;
@@ -9,27 +9,34 @@ public class Hogwarts {
         this.transgressionDistance = transgressionDistance;
     }
 
-    public void compareMagicPower(Hogwarts student) {
-        if (this.magicPower < student.magicPower) {
-            System.out.println(student.name + " обладает бОльшей мощностью магии, чем " + this.name);
-        }
-        else if (this.magicPower == student.magicPower) {
-            System.out.println(this.name + " обладает такой же мощностью магии, как " + student.name);
-        }
-        else {
-            System.out.println(this.name + " обладает бОльшей мощностью магии, чем " + student.name);
+    abstract int calculateFacultyPoints();
+
+    abstract void compareFacultyPoints(Hogwarts student);
+
+    public int calculateGeneralPoints() {
+        return this.magicPower + this.transgressionDistance;
+    }
+
+    public void compare(Hogwarts student) {
+        if (this.getClass().equals(student.getClass())) {
+            compareFacultyPoints(student);
+        } else {
+            compareGeneralPoints(student);
         }
     }
 
-    public void comparetransgressionDistance(Hogwarts student) {
-        if (this.transgressionDistance < student.transgressionDistance) {
-            System.out.println(student.name + " обладает бОльшим расстоянием трансгрессии, чем " + this.name);
+    public void compareGeneralPoints(Hogwarts student) {
+        int thisGeneralPoints = this.calculateGeneralPoints();
+        int studentGeneralPoints = student.calculateGeneralPoints();
+
+        if (thisGeneralPoints < studentGeneralPoints) {
+            System.out.println(student.name + " сильнее, чем " + this.name);
         }
-        else if (this.transgressionDistance == student.transgressionDistance) {
-            System.out.println(this.name + " обладает таким же расстоянием трансгрессии, как " + student.name);
+        else if (thisGeneralPoints == studentGeneralPoints) {
+            System.out.println(this.name + " и " + student.name + " равны по силе");
         }
         else {
-            System.out.println(this.name + " обладает бОльшим расстоянием трансгрессии, чем " + student.name);
+            System.out.println(this.name + " сильнее, чем " + student.name);
         }
     }
 

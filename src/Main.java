@@ -26,12 +26,12 @@ public class Main {
         System.out.println(padmaPatil);
         System.out.println(markusBelby);
 
-        harryPotter.compareMagicPower(zahariaSmyth);
-        gregoryGoyle.compareMagicPower(chzhouChang);
-        grahamMontague.comparetransgressionDistance(hermioneGranger);
-        harryPotter.compareGryffindorStudents(hermioneGranger);
-        gregoryGoyle.compareSlytherinStudents(harryPotter);
-        justinFinchFletchly.compareHufflepuffStudents(sedricDiggory);
+        harryPotter.compare(grahamMontague);
+        gregoryGoyle.compare(chzhouChang);
+        grahamMontague.compare(hermioneGranger);
+        harryPotter.compare(hermioneGranger);
+        gregoryGoyle.compare(harryPotter);
+        justinFinchFletchly.compare(sedricDiggory);
 
 
     }

@@ -1,8 +1,8 @@
 public class Ravenclaw extends Hogwarts {
-    private int intelligence;
-    private int wisdom;
-    private int wit;
-    private int creativity;
+    private final int intelligence;
+    private final int wisdom;
+    private final int wit;
+    private final int creativity;
 
     public Ravenclaw(String name, int magicPower, int transgressionDistance, int intelligence, int wisdom, int wit, int creativity) {
         super(name, magicPower, transgressionDistance);
@@ -12,21 +12,24 @@ public class Ravenclaw extends Hogwarts {
         this.creativity = creativity;
     }
 
-    public void compareRavenclawStudents(Hogwarts student) {
-        if (student instanceof Ravenclaw) {
-            if ((intelligence + wisdom + wit + creativity) < (((Ravenclaw) student).intelligence + ((Ravenclaw) student).wisdom + ((Ravenclaw) student).wit) + ((Ravenclaw) student).creativity) {
-                System.out.println(super.name + " лучший Когтевранец, чем " + student.name);
-            }
-            else if ((intelligence + wisdom + wit + creativity) > (((Ravenclaw) student).intelligence + ((Ravenclaw) student).wisdom + ((Ravenclaw) student).wit) + ((Ravenclaw) student).creativity) {
-                System.out.println(student.name + " лучший Когтевранец, чем " + super.name);
-            }
-            else {
-                System.out.println(student.name + " и " + super.name + " набрали одинаковое количество очков");
-            }
+    public void compareFacultyPoints(Hogwarts student) {
+        int thisFacultyPoints = this.calculateFacultyPoints();
+        int studentFacultyPoints = student.calculateFacultyPoints();
+
+        if (thisFacultyPoints < studentFacultyPoints) {
+            System.out.println(super.name + " лучший Когтевранец, чем " + student.name);
+        }
+        else if (thisFacultyPoints > studentFacultyPoints) {
+            System.out.println(student.name + " лучший Когтевранец, чем " + super.name);
         }
         else {
-            System.out.println(student.name + " не учится на факультете Когтевран");
+            System.out.println(student.name + " и " + super.name + " набрали одинаковое количество очков");
         }
+    }
+
+    @Override
+    int calculateFacultyPoints() {
+        return this.intelligence + this.wit + this.creativity + this.wisdom;
     }
 
     @Override

@@ -1,9 +1,9 @@
 public class Slytherin extends Hogwarts {
-    private int cunning;
-    private int determination;
-    private int ambition;
-    private int resourcefulness;
-    private int thirstForPower;
+    private final int cunning;
+    private final int determination;
+    private final int ambition;
+    private final int resourcefulness;
+    private final int thirstForPower;
 
     public Slytherin(String name, int magicPower, int transgressionDistance, int cunning, int determination, int ambition, int resourcefulness, int thirstForPower) {
         super(name, magicPower, transgressionDistance);
@@ -14,21 +14,24 @@ public class Slytherin extends Hogwarts {
         this.thirstForPower = thirstForPower;
     }
 
-    public void compareSlytherinStudents(Hogwarts student) {
-        if (student instanceof Slytherin) {
-            if ((cunning + determination + ambition + resourcefulness + thirstForPower) < (((Slytherin) student).cunning + ((Slytherin) student).determination + ((Slytherin) student).ambition) + ((Slytherin) student).resourcefulness + ((Slytherin) student).thirstForPower) {
-                System.out.println(super.name + " лучший Слизериновец, чем " + student.name);
-            }
-            else if ((cunning + determination + ambition + resourcefulness + thirstForPower) > (((Slytherin) student).cunning + ((Slytherin) student).determination + ((Slytherin) student).ambition) + ((Slytherin) student).resourcefulness + ((Slytherin) student).thirstForPower)  {
-                System.out.println(student.name + " лучший Слизериновец, чем " + super.name);
-            }
-            else {
-                System.out.println(student.name + " и " + super.name + " набрали одинаковое количество очков");
-            }
+    public void compareFacultyPoints(Hogwarts student) {
+        int thisFacultyPoints = this.calculateFacultyPoints();
+        int studentFacultyPoints = student.calculateFacultyPoints();
+
+        if (thisFacultyPoints < studentFacultyPoints) {
+            System.out.println(super.name + " лучший Слизеринец, чем " + student.name);
+        }
+        else if (thisFacultyPoints > studentFacultyPoints) {
+            System.out.println(student.name + " лучший Слизеринец, чем " + super.name);
         }
         else {
-            System.out.println(student.name + " не учится на факультете Слизерин");
+            System.out.println(student.name + " и " + super.name + " набрали одинаковое количество очков");
         }
+    }
+
+    @Override
+    int calculateFacultyPoints() {
+        return this.determination + this.cunning + this.ambition + this.resourcefulness + this.thirstForPower;
     }
 
     @Override
